@@ -1,0 +1,690 @@
+{
+
+"template" : "bro*",
+"mappings" : {
+   "bro_conn_log" : {
+      "properties" : {
+          "@timestamp": {"type": "date"},
+          "uid": {
+              "type": "string"
+          },
+          "id.orig_h" : {
+             "type": "ip" 
+          },
+          "id.orig_p" : {
+             "type": "integer"
+          },
+          "id.resp_h" : {
+             "type": "ip"
+          },
+          "id.resp_p" : {
+             "type": "integer"
+          },
+          "proto" : {
+             "type": "string"
+          },
+          "service" : {
+             "type": "text",
+             "fields": {
+                "keyword": {
+                   "type": "keyword",
+                   "ignore_above": 256
+                }
+             }
+          },
+          "duration" : {
+             "type": "float"
+          },
+          "orig_bytes" : {
+             "type": "integer"
+          },
+          "resp_bytes" : {
+             "type": "integer"
+          },
+          "conn_state" : {
+             "type": "string"
+          },
+          "local_orig" : {
+             "type": "boolean"
+          },
+          "missed_bytes" : {
+             "type": "integer"
+          },
+          "history" : {
+             "type": "string"
+          },
+          "orig_pkts" : {
+             "type": "integer"
+          },
+          "orig_ip_bytes" : {
+             "type": "integer"
+          },
+          "resp_bytes" : {
+             "type": "integer"
+          },
+          "resp_ip_bytes" : {
+             "type": "integer"
+          },
+          "tunnel_parents" : {
+             "type": "string"
+          },
+          "orig_cc" : {
+             "type": "string"
+          },
+          "resp_cc" : {
+             "type": "string"
+          },
+          "geoip": {
+             "properties": {
+                 "area_code": {
+		    "type": "string",
+		    "index": "not_analyzed"
+		 },
+		 "city_name": {
+		    "type": "string"
+		 },
+		 "continent_code": {
+		    "type": "string",
+		    "index": "not_analyzed"
+		 },
+		 "country_code2": {
+		    "type": "string",
+		    "index": "not_analyzed"
+		 },
+		 "country_code3": {
+		    "type": "string",
+		    "index": "not_analyzed"
+		 },
+		 "country_name": {
+		    "type": "string",
+		    "index": "not_analyzed"
+		 },
+		 "dma_code": {
+		    "type": "integer"
+		 },
+		 "ip": {
+		    "type": "ip"
+		 },
+		 "latitude": {
+		    "type": "double"
+		 },
+		 "location": {
+		    "type": "geo_point"
+		 },
+		 "longitude": {
+		    "type": "double"
+		 },
+		 "postal_code": {
+		    "type": "string",
+		    "index": "not_analyzed"
+		 },
+		 "real_region_name": {
+		     "type": "string",
+		     "index": "not_analyzed"
+		 },
+		 "region_name": {
+		     "type": "string",
+                     "index": "not_analyzed"
+		 },
+		 "timezone": {
+		     "type": "string",
+		     "index": "not_analyzed"
+ 		 }
+              } 
+           }
+        }
+     },
+
+   "bro_dns_log" : {
+       "properties" : {
+          "@timestamp": {"type": "date"},
+          "uid": {
+              "type": "string"
+          },
+          "id.orig_h" : {
+              "type": "ip"
+          },
+          "id.orig_p" : {
+              "type": "integer"
+          },
+          "id.resp_h" : {
+              "type": "ip"
+          },
+          "id.resp_p" : {
+              "type": "integer"
+          },
+          "proto" : {
+              "type": "string"
+          },
+          "trans_id" : {
+              "type": "string"
+          },
+          "query" : {
+              "type": "keyword"
+          },
+          "qclass" : {
+              "type": "integer"
+          },
+          "qclass_name" : {
+              "type": "string"
+          },
+          "qtype" : {
+              "type": "integer"
+          },
+          "qtype_name" : {
+              "type": "string"
+          },
+          "rcode" : {
+              "type": "integer"
+          },
+          "rcode_name" : {
+              "type": "string"
+          },
+          "QR" : {
+              "type": "boolean"
+          },
+          "AA" : {
+              "type": "boolean"
+          },
+          "TC" : {
+              "type": "boolean"
+          },
+          "RD" : {
+              "type": "boolean"
+          },
+          "RA" : {
+              "type": "boolean"
+          },
+          "Z" : {
+              "type": "integer"
+          },
+          "answers" : {
+              "type": "string"
+          },
+          "TTLs" : {
+              "type": "string"
+          },
+          "rejected" : { 
+              "type": "boolean"
+         }
+      }
+   },
+
+   "bro_http_log" : {
+       "properties" : {
+          "@timestamp": {"type": "date"},
+          "uid": {
+              "type": "string"
+          },
+          "id.orig_h" : {
+              "type": "ip"
+          },
+          "id.orig_p" : {
+              "type": "integer"
+          },
+          "id.resp_h" : {
+              "type": "ip"
+          },
+          "id.resp_p" : {
+              "type": "integer"
+          },
+          "trans_depth" : {
+              "type": "integer"
+          },
+          "method" : {
+              "type": "keyword"
+          },
+          "host" : {
+              "type": "keyword"
+          },
+          "uri" : {
+              "type": "string"
+          },
+          "referrer" : {
+              "type": "string"
+          },
+          "version" : {
+              "type": "string"
+          },
+          "user_agent" : {
+              "type": "keyword"
+          },
+          "request_body_len" : {
+              "type": "integer"
+          },
+          "response_body_len" : {
+              "type": "integer"
+          },
+          "status_code" : {
+               "type": "keyword"
+          },
+          "status_msg" : {
+               "type": "string"
+          },
+          "info_code" : {
+               "type": "integer"
+          },
+          "info_msg" : {
+               "type": "string"
+          },
+          "filename" : {
+               "type": "string"
+          },
+          "tag_set" : {
+               "type": "string"
+          },
+          "username" : {
+               "type": "string"
+          },
+          "password" : {
+               "type": "string"
+          },
+          "proxied" : {
+               "type": "string"
+          },
+          "orig_fuids" : {
+               "type": "string"
+          },
+          "orig_mime_types" : {
+               "type": "string"
+          },
+          "resp_fuids" : {
+               "type": "string"
+          },
+          "resp_mime_types" : {
+               "type": "string"
+          }
+        }   
+     },
+
+   "bro_weird_log" : {
+       "properties" : {
+          "@timestamp": {"type": "date"},
+          "uid": {
+              "type": "string"
+          },
+          "src_ip" : {
+              "type": "string"
+          },
+          "id.orig_p" : {
+              "type": "integer"
+          },
+          "dst_ip" : {
+              "type": "string"
+          },
+          "id.resp_p" : {
+              "type": "integer"
+          },
+          "name" : {
+              "type": "string"
+          },
+          "addl" : {
+              "type": "string"
+          },
+          "notice" : {
+              "type": "string"
+          },
+          "peer" : {
+              "type": "string"
+          }
+       }
+   },
+   "bro_syslog_log" : {
+      "properties" : {
+          "@timestamp": {"type": "date"},
+          "uid": {
+              "type": "string"
+          },
+          "syslog.orig_h" : {
+             "type": "ip"
+          },
+          "id.orig_p" : {
+             "type": "integer"
+          },
+          "syslog.resp_h" : {
+             "type": "ip"
+          },
+          "id.resp_p" : {
+             "type": "integer"
+          },
+          "proto" : {
+             "type": "string"
+          },
+          "facility" : {
+             "type": "string"
+          },
+          "severity" : {
+             "type" : "text",
+             "fields": {
+                "keyword": {
+                   "type": "keyword",
+                   "ignore_above": 50
+                }
+             }
+          },
+          "syslog_msg" : {
+             "type" : "text",
+             "fields": {
+                "keyword": {
+                   "type": "keyword",
+                   "ignore_above": 100
+                }
+             }
+          },
+          "geoip_syslog_source": {
+             "properties": {
+                 "area_code": {
+		    "type": "string",
+		    "index": "not_analyzed"
+		 },
+		 "city_name": {
+		    "type": "string"
+		 },
+		 "continent_code": {
+		    "type": "string",
+		    "index": "not_analyzed"
+		 },
+		 "country_code2": {
+		    "type": "string",
+		    "index": "not_analyzed"
+		 },
+		 "country_code3": {
+		    "type": "string",
+		    "index": "not_analyzed"
+		 },
+		 "country_name": {
+		    "type": "string",
+		    "index": "not_analyzed"
+		 },
+		 "dma_code": {
+		    "type": "integer"
+		 },
+		 "ip": {
+		    "type": "ip"
+		 },
+		 "latitude": {
+		    "type": "double"
+		 },
+		 "location": {
+		    "type": "geo_point"
+		 },
+		 "longitude": {
+		    "type": "double"
+		 },
+		 "postal_code": {
+		    "type": "string",
+		    "index": "not_analyzed"
+		 },
+		 "real_region_name": {
+		     "type": "string",
+		     "index": "not_analyzed"
+		 },
+		 "region_name": {
+		     "type": "string",
+                     "index": "not_analyzed"
+		 },
+		 "timezone": {
+		     "type": "string",
+		     "index": "not_analyzed"
+ 		 }
+              } 
+           }
+        }
+     },
+
+   "bro_notice_log" : {
+       "properties" : {
+          "@timestamp": {"type": "date"},
+          "uid": {
+              "type": "string"
+          },
+          "src_ip" : {
+              "type": "string"
+          },
+          "id.orig_p" : {
+              "type": "integer"
+          },
+          "dst_ip" : {
+              "type": "string"
+          },
+          "id.resp_p" : {
+              "type": "integer"
+          },
+          "fuid" : {
+              "type": "string"
+          },
+          "file_mime_type" : {
+              "type": "string"
+          },
+          "file_desc" : {
+              "type": "string"
+          },
+          "proto" : {
+              "type": "string"
+          },
+          "note" : {
+              "type": "string"
+          },
+          "msg" : {
+              "type": "keyword"
+          },
+          "sub" : {
+              "type": "string"
+          },
+          "src" : {
+              "type": "ip"
+          },
+          "dst" : {
+              "type": "ip"
+          },
+          "p" : {
+              "type": "integer"
+          },
+          "n" : {
+              "type": "integer"
+          },
+          "peer_descr" : {
+              "type": "string"
+          },
+          "actions" : {
+              "type": "string"
+          },
+          "suppress_for" : {
+              "type": "float"
+          },
+          "dropped" : {
+              "type": "boolean"
+          },
+          "remote_location.country_code" : {
+              "type": "string"
+          },
+          "remote_location.region" : {
+              "type": "string"
+          },
+          "remote_location.city" : {
+              "type": "string"
+          },
+          "remote_location.latitude" : {
+              "type": "float"
+          },
+         "remote_location.longitude" : {
+              "type": "float"
+          },
+         "geoip_notice_src": {
+             "properties": {
+                 "area_code": {
+                    "type": "string",
+                    "index": "not_analyzed"
+                 },
+                 "city_name": {
+                    "type": "string"
+                 },
+                 "continent_code": {
+                    "type": "string",
+                    "index": "not_analyzed"
+                 },
+                 "country_code2": {
+                    "type": "string",
+                    "index": "not_analyzed"
+                 },
+                 "country_code3": {
+                    "type": "string",
+                    "index": "not_analyzed"
+                 },
+                 "country_name": {
+                    "type": "string",
+                    "index": "not_analyzed"
+                 },
+                 "dma_code": {
+                    "type": "integer"
+                 },
+                 "ip": {
+                    "type": "ip"
+                 },
+                 "latitude": {
+                    "type": "double"
+                 },
+                 "location": {
+                    "type": "geo_point"
+                 },
+                 "longitude": {
+                    "type": "double"
+                 },
+                 "postal_code": {
+                    "type": "string",
+                    "index": "not_analyzed"
+                 },
+                 "real_region_name": {
+                     "type": "string",
+                     "index": "not_analyzed"
+                 },
+                 "region_name": {
+                     "type": "string",
+                     "index": "not_analyzed"
+                 },
+                 "timezone": {
+                     "type": "string",
+                     "index": "not_analyzed"
+                 }
+              }
+           }
+        }
+     },
+
+   "bro_files_log" : {
+       "properties" : {
+          "@timestamp": {"type": "date"},
+          "fuid": {
+              "type": "string"
+          },
+          "tx_hosts" : {
+              "type": "string"
+          },
+          "rx_hosts" : {
+              "type": "string"
+          },
+          "conn_uids" : {
+              "type": "string"
+          },
+          "source" : {
+              "type": "string"
+          },
+          "depth" : {
+              "type": "integer"
+          },
+          "analyzers" : {
+              "type": "string"
+          },
+          "mime_type" : {
+              "type": "string"
+          },
+          "filename" : {
+              "type": "string"
+          },
+          "duration" : {
+              "type": "float"
+          },
+          "local_orig" : {
+              "type": "boolean"
+          },
+          "is_orig" : {
+              "type": "boolean"
+          },
+          "seen_bytes" : {
+              "type": "integer"
+          },
+          "total_bytes" : {
+              "type": "integer"
+          },
+          "missing_bytes" : {
+              "type": "integer"
+          },
+          "overflow_bytes" : {
+              "type": "integer"
+          },
+          "timedout" : {
+              "type": "boolean"
+          },
+          "parent_fuid" : {
+              "type": "string"
+          },
+          "md5" : {
+              "type": "keyword"
+          },
+          "sha1" : {
+              "type": "keyword"
+          },
+          "sha256" : {
+              "type": "keyword"
+          },
+          "extracted" : {          
+              "type": "string"
+          }
+      }
+   },
+
+   "bro_intel_log" : {
+       "properties" : {
+          "@timestamp": {"type": "date"},
+          "uid": {
+              "type": "string"
+          },
+          "id.orig_h" : {
+              "type": "ip"
+          },
+          "id.orig_p" : {
+              "type": "integer"
+          },
+          "id.resp_h" : {
+              "type": "ip"
+          },
+          "id.resp_p" : {
+              "type": "integer"
+          },
+          "fuid" : {
+              "type": "string"
+          },
+          "file_mime_type" : {
+              "type": "string"
+          },
+          "file_desc" : {
+              "type": "string"
+          },
+          "seen.indicator" : {
+              "type": "string"
+          },
+          "seen.indicator_type" : {
+              "type": "string"
+          },
+          "seen.where" : {
+              "type": "string"
+          },
+          "sources" : {
+              "type": "string"
+          }
+       }
+    }
+ }
+
+}
+

@@ -1,0 +1,492 @@
+{
+
+"template" : "snort-logstash-*",
+"mappings" : {
+   "snort_alerts_log" : {
+      "properties" : {
+          "@timestamp": {"type": "date"},
+           "sig_generator" : {
+               "type": "string"
+           },  
+           "sig_id" : {
+               "type": "keyword"
+           },
+            "sig_rev" : {
+               "type": "string"
+           },
+           "msg" : {
+               "type": "keyword"
+           },
+           "proto" : {
+               "type": "string"
+           },
+           "src" : {
+               "type": "ip"
+           },
+           "srcport" : {
+               "type": "integer"
+           },
+           "dst" : {
+               "type": "ip"
+           },
+           "dstport" : {
+               "type": "integer"
+           },
+           "geoip": {
+             "properties": {
+                 "area_code": {
+                    "type": "string",
+                    "index": "not_analyzed"
+                 },
+                 "city_name": {
+                    "type": "string"
+                 },
+                 "continent_code": {
+                    "type": "string",
+                    "index": "not_analyzed"
+                 },
+                 "country_code2": {
+                    "type": "string",
+                    "index": "not_analyzed"
+                 },
+                 "country_code3": {
+                    "type": "string",
+                    "index": "not_analyzed"
+                 },
+                 "country_name": {
+                    "type": "string",
+                    "index": "not_analyzed"
+                 },
+                 "dma_code": {
+                    "type": "integer"
+                 },
+                 "ip": {
+                    "type": "ip"
+                 },
+                 "latitude": {
+                    "type": "double"
+                 },
+                 "location": {
+                    "type": "geo_point"
+                 },
+                 "longitude": {
+                    "type": "double"
+                 },
+                 "postal_code": {
+                    "type": "string",
+                    "index": "not_analyzed"
+                 },
+                 "real_region_name": {
+                     "type": "string",
+                     "index": "not_analyzed"
+                 },
+                 "region_name": {
+                     "type": "string",
+                     "index": "not_analyzed"
+                 },
+                 "timezone": {
+                     "type": "string",
+                     "index": "not_analyzed"
+                 }
+              } 
+           }
+        }
+     },
+     
+   "snort_stats_log" : {
+      "properties" : {
+          "@timestamp": {"type": "date"},
+           "pkt_drop_percent" : {
+               "type": "float"
+           },
+           "wire_mbits_per_sec.realtime" : {
+               "type": "float"
+           },
+           "alerts_per_second" : {
+               "type": "float"
+           },
+           "kpackets_wire_per_sec.realtime" : {
+               "type": "float"
+           },
+           "avg_bytes_per_wire_packet" : {
+               "type": "float"
+           },
+           "patmatch_percent" : {
+               "type": "float"
+           },
+           "syns_per_second" : {
+               "type": "float"
+           },
+           "synacks_per_second" : {
+               "type": "float"
+           },
+           "new_sessions_per_second" : {
+               "type": "float"
+           },
+           "deleted_sessions_per_second" : {
+               "type": "float"
+           },
+           "total_sessions" : {
+               "type": "float"
+           },
+           "max_sessions" : {
+               "type": "float"
+           },
+           "stream_flushes_per_second" : {
+               "type": "float"
+           },
+           "stream_faults" : {
+               "type": "float"
+           },
+           "stream_timeouts" : {
+               "type": "float"
+           },
+           "frag_creates_per_second" : {
+               "type": "float"
+           },
+           "frag_completes_per_second" : {
+               "type": "float"
+           },
+           "frag_inserts_per_second" : {
+               "type": "float"
+           },
+           "frag_deletes_per_second" : {
+               "type": "float"
+           },
+           "frag_autofrees_per_second" : {
+               "type": "float"
+           },
+           "frag_flushes_per_second" : {
+               "type": "float"
+           },
+           "current_frags" : {
+               "type": "float"
+           },
+           "max_frags" : {
+               "type": "float"
+           },
+           "frag_timeouts" : {
+               "type": "float"
+           },
+           "frag_faults" : {
+               "type": "float"
+           },
+           "iCPUs" : {
+               "type": "float"
+           },        
+           "usr0" : {
+                "type": "float"
+           },
+           "sys0" : {
+                "type": "float"
+           },
+           "idle0" : {
+                "type": "float"
+           },
+           "wire_mbits_per_sec.realtime" : {
+               "type": "float"
+           },
+           "ipfrag_mbits_per_sec.realtime" : {
+               "type": "float"
+           },
+           "ipreass_mbits_per_sec.realtime" : {
+               "type": "float"
+           },
+           "rebuilt_mbits_per_sec.realtime" : {
+               "type": "float"
+           },
+           "mbits_per_sec.realtime" : {
+               "type": "float"
+           },
+           "avg_bytes_per_wire_packet" : {
+               "type": "float"
+           },
+           "avg_bytes_per_ipfrag_packet" : {
+               "type": "float"
+           },
+           "avg_bytes_per_ipreass_packet" : {
+               "type": "float"
+           },
+           "avg_bytes_per_rebuilt_packet" : {
+               "type": "float"
+           },
+           "avg_bytes_per_packet" : {
+               "type": "float"
+           },
+           "kpackets_wire_per_sec.realtime" : {
+                "type": "float"
+           },
+           "kpackets_ipfrag_per_sec.realtime" : {
+                "type": "float"
+           },
+           "kpackets_ipreass_per_sec.realtime" : {
+                "type": "float"
+           },
+           "kpackets_rebuilt_per_sec.realtime" : {
+                "type": "float"
+           },
+           "kpackets_per_sec.realtime" : {
+                "type": "float"
+           },
+           "pkt_stats.pkts_recv" : {
+                "type": "float"
+           },
+           "pkt_stats.pkts_drop" : {
+                 "type": "float"
+           },
+           "total_blocked_verdicts" : {
+                 "type": "float"
+           },
+           "new_udp_sessions_per_second" : {
+                 "type": "float"
+           },
+           "deleted_udp_sessions_per_second" : {
+                 "type": "float"
+           },
+           "total_udp_sessions" : {
+                 "type": "float"
+           },
+           "max_udp_sessions" : {
+                 "type": "float"
+           },
+           "max_tcp_sessions_interval" : {
+                 "type": "float"
+           },
+           "curr_tcp_sessions_initializing" : {
+                 "type": "float"
+           },
+           "curr_tcp_sessions_established" : {
+                 "type": "float"
+           },
+           "curr_tcp_sessions_closing" : {
+                 "type": "float"
+           },
+           "tcp_sessions_midstream_per_second" : {
+                 "type": "float"
+           },
+           "tcp_sessions_closed_per_second" : {
+                 "type": "float"
+           },
+           "tcp_sessions_timedout_per_second" : {
+                 "type": "float"
+           },
+           "tcp_sessions_pruned_per_second" : {
+                 "type": "float"
+           },
+           "tcp_sessions_dropped_async_per_second" : {
+                 "type": "float"
+           },
+           "current_attribute_hosts" : {
+                 "type": "float"
+           },
+           "attribute_table_reloads" : {
+                 "type": "float"
+           },
+           "mpls_mbits_per_sec.realtime" : {
+                 "type": "float"
+           },
+           "avg_bytes_per_mpls_packet" : {
+                 "type": "float"
+           },
+           "kpackets_per_sec_mpls.realtime" : {
+                 "type": "float"
+           },
+           "total_tcp_filtered_packets" : {
+                 "type": "float"
+           },
+           "total_udp_filtered_packets" : {
+                 "type": "float"
+           },
+           "num_normalizations" : {
+                 "type": "float"
+           },
+           "ip4_trim" : {
+                 "type": "float"
+           },
+           "ip4_tos" : {
+                 "type": "float"
+           },
+           "ip4_df" : {
+                 "type": "float"
+           },
+           "ip4_rf" : {
+                 "type": "float"
+           },
+           "ip4_ttl" : {
+                 "type": "float"
+           },
+           "ip4_opts" : {
+                 "type": "float"
+           },
+           "icmp4_echo" : {
+                 "type": "float"
+           },
+           "ip6_ttl" : {
+                 "type": "float"
+           },
+           "ip6_opts" : {
+                 "type": "float"
+           },
+           "icmp6_echo" : {
+                 "type": "float"
+           },
+           "tcp_syn_opt" : {
+                 "type": "float"
+           },
+           "tcp_opt" : {
+                 "type": "float"
+           },
+           "tcp_pad" : {
+                 "type": "float"
+           },
+           "tcp_rsv" : {
+                 "type": "float"
+           },
+           "tcp_ns" : {
+                 "type": "float"
+           },
+           "tcp_urp" : {
+                 "type": "float"
+           },
+           "tcp_ecn_pkt" : {
+                 "type": "float"
+           },
+           "tcp_ecn_ssn" : {
+                 "type": "float"
+           },
+           "tcp_ts_ecr" : {
+                 "type": "float"
+           },
+           "tcp_ts_nop" : {
+                 "type": "float"
+           },
+           "tcp_ips_data" : {
+                 "type": "float"
+           },
+           "tcp_block" : {
+                 "type": "float"
+           },
+           "tcp_req_urg" : {
+                 "type": "float"
+           },
+           "tcp_req_pay" : {
+                 "type": "float"
+           },
+           "tcp_req_urp" : {
+                 "type": "float"
+           },
+           "tcp_trim_syn" : {
+                 "type": "float"
+           },
+           "tcp_trim_rst" : {
+                 "type": "float"
+           },
+           "tcp_trim_win" : {
+                 "type": "float"
+           },
+           "tcp_trim_mss" : {
+                 "type": "float"
+           },
+           "would_ip4_trim" : {
+                 "type": "float"
+           },
+           "would_ip4_tos" : {
+                 "type": "float"
+           },
+           "would_ip4_df" : {
+                 "type": "float"
+           },
+           "would_ip4_rf" : {
+                 "type": "float"
+           },
+           "would_ip4_ttl" : {
+                 "type": "float"
+           },
+           "would_ip4_opts" : {
+                 "type": "float"
+           },
+           "would_icmp4_echo" : {
+                 "type": "float"
+           },
+           "would_ip6_ttl" : {
+                 "type": "float"
+           },
+           "would_ip6_opts" : {
+                 "type": "float"
+           },
+           "would_icmp6_echo" : {
+                 "type": "float"
+           },
+           "would_tcp_syn_opt" : {
+                 "type": "float"
+           },
+           "would_tcp_opt" : {
+                 "type": "float"
+           },
+           "would_tcp_pad" : {
+                 "type": "float"
+           },
+           "would_tcp_rsv" : {
+                 "type": "float"
+           },
+           "would_tcp_ns" : {
+                 "type": "float"
+           },
+           "would_tcp_urp" : {
+                 "type": "float"
+           },
+           "would_tcp_ecn_pkt" : {
+                 "type": "float"
+           },
+           "would_tcp_ecn_ssn" : {
+                 "type": "float"
+           },
+           "would_tcp_ts_ecr" : {
+                 "type": "float"
+           },
+           "would_tcp_ts_nop" : {
+                 "type": "float"
+           },
+           "would_tcp_ips_data" : {
+                 "type": "float"
+           },
+           "would_tcp_block" : {
+                 "type": "float"
+           },
+           "would_tcp_req_urg" : {
+                 "type": "float"
+           },
+           "would_tcp_req_pay" : {
+                 "type": "float"
+           },
+           "would_tcp_req_urp" : {
+                 "type": "float"
+           },
+           "would_tcp_trim_syn" : {
+                 "type": "float"
+           },
+           "would_tcp_trim_rst" : {
+                 "type": "float"
+           },
+           "would_tcp_trim_win" : {
+                 "type": "float"
+           },
+           "would_tcp_trim_mss" : {
+                 "type": "float"
+           },
+           "total_injected_packets" : {
+                 "type": "float"
+           },
+           "frag3_mem_in_use" : {
+                 "type": "float"
+           },
+           "stream5_mem_in_use" : {
+                 "type": "float"
+           },
+           "total_alerts_per_second" : {
+                 "type": "float"
+           }
+        }
+     }
+  }
+}

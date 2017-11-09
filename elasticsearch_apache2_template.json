@@ -1,0 +1,36 @@
+{
+ "template" : "apache2-logstash-*",
+    "mappings" : {
+        "apache2" : {
+           "properties" : {
+              "timestamp" : {"type" : "date", "format" : "dd/MM/YYYY:HH:MM:ss Z" },
+               "auth" : {"type" : "string"},
+               "ident" : {"type" : "string"},
+               "referrer" : {"type" : "string"},
+               "response" : {"type" : "integer"},
+               "clientip" : {"type" : "ip"},
+               "host" : {"type" : "string"},
+               "httpversion" : {"type" : "string"},
+               "request" : {"type" : "string"},
+               "agent" : {"type" : "text", "fields": {"keyword": {"type" : "keyword", "ignore_above": 256}}},
+               "geoip" : {
+                  "properties" : {
+                     "timezone" : {"type" : "string"},
+                     "ip" : {"type" : "ip"},
+                     "latitude" : {"type" : "double"},
+                     "continent_code" : {"type" : "string"},
+                     "local" : {"type" : "string"},
+                     "city_name" : {"type" : "string"},
+                     "country_name" : {"type" : "string"},
+                     "country_code2" : {"type" : "string"},
+                     "country_code3" : {"type" : "string"},
+                     "region_name" : {"type" : "string"},
+                     "location" : {"type" : "geo_point"},
+                     "region_code" : {"type" : "string"},
+                     "longitude" : {"type" : "double"}
+                  }
+              }
+          }
+      }
+   }
+}  

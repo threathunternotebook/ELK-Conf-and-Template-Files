@@ -1,0 +1,51 @@
+{
+  "template" : "pfsense-*",
+  "mappings" : {
+     "pFSense" : {
+        "properties" : {
+           "dateTime" : {"type": "date", "format": "MMM dd HH:mm:ss||MMM  d HH:mm:ss"},
+           "event_id" : {"type": "integer", "index" : "not_analyzed"},
+           "prog" : {"type": "string", "index" : "not_analyzed"},
+           "facility" : {"type": "integer", "index" : "not_analyzed"},
+           "severity_label" : {"type": "string", "index" : "not_analyzed"},
+           "severity" : {"type": "integer", "index" : "not_analyzed"},
+           "priority" : {"type": "integer", "index" : "not_analyzed"},
+           "rule" : {"type": "integer", "index" : "not_analyzed"},
+           "sub_rule" : {"type": "long", "index" : "not_analyzed"},
+           "anchor" : {"type": "string"},
+           "tracker_id" : {"type": "string"},
+           "interface" : {"type": "string", "index" : "not_analyzed"},
+           "reason" : {"type": "string", "index" : "not_analyzed"},
+           "action" : {"type": "string", "index" : "not_analyzed"},
+           "direction" : {"type": "string", "index" : "not_analyzed"},
+           "ip_version" : {"type": "string", "index" : "not_analyzed"},
+           "TOS" : {"type": "string", "index" : "not_analyzed"},
+           "ECN" : {"type": "integer", "index" : "not_analyzed"},
+           "TTL" : {"type": "integer", "index" : "not_analyzed"},
+           "ID" : {"type": "string", "index" : "not_analyzed"},
+           "offset" : {"type": "string", "index" : "not_analyzed"},
+           "flags" : {"type": "string", "index" : "not_analyzed"},
+           "proto_id" : {"type": "integer", "index" : "not_analyzed"},
+           "proto_name" : {"type": "string", "index" : "not_analyzed"},
+           "icmp_type" : {"type": "string", "index" : "not_analyzed"},
+           "length" : {"type": "double", "index" : "not_analyzed"},
+           "src_ip" : {"type": "ip"},
+           "dst_ip" : {"type": "ip"},
+           "src_port" : {"type": "integer", "index" : "not_analyzed"},
+           "dst_port" : {"type": "integer", "index" : "not_analyzed"},
+           "data_length" : {"type": "integer", "index" : "not_analyzed"},
+           "tcp_flgs" : {"type": "string", "index" : "not_analyzed"},
+           "seq_num" : {"type": "long"},
+           "ack" : {"type": "long"},
+           "window_size" : {"type": "integer", "index" : "not_analyzed"},
+           "urg" :  {"type": "string", "index" : "not_analyzed"},
+           "options" : {"type": "string", "index" : "not_analyzed"},
+           "pfsense_geoip" : {
+              "properties": {
+                "location" : {"type": "geo_point"}
+              }
+           }
+        }
+     }
+  }
+}
