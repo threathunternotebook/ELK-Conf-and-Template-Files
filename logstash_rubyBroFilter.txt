@@ -1,0 +1,17 @@
+# ruby filter plugin code to remove fields with dashes and replace fields with T or F to true or false
+# elastic stack version 6.3.2
+  ruby {
+    code => "
+      eventhash = event.to_hash
+      eventhash.each do |key, value|
+       if value == '-'
+         event.remove(key)
+       end
+       if value == 'T'
+         event.set(key, 'true')
+       end
+       if value == 'F'
+         event.set(key, 'false')
+       end
+      end
+    "
